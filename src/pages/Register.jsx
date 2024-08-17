@@ -45,7 +45,7 @@ function Signup() {
         <input
           type='text'
           id='username'
-          autocomplete='off'
+          autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className='shadow appearance-none rounded-md w-full py-2 px-3 bg-zinc-800 text-gray-200 leading-tight focus:outline-none focus:shadow-outline'
@@ -58,7 +58,7 @@ function Signup() {
         <input
           type='password'
           id='password'
-          autocomplete='off'
+          autoComplete="off"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className='shadow appearance-none rounded-md w-full py-2 px-3 bg-zinc-800 text-gray-200 leading-tight focus:outline-none focus:shadow-outline'
