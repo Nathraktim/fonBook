@@ -4,7 +4,7 @@ const Contact = ({ contact, emailContact, callContact, deleteContact, openEditFo
   return (
     <li key={contact.id} className="mx-10 my-5">
       <div className="flex items-center my-3 justify-between flex-wrap">
-        <div className="flex flex-row gap-2 pl-16">
+        <div className="flex flex-row gap-2">
           {contact.photoLink ? (
             <div className="aspect-1 h-16 mr-3 overflow-hidden rounded-full">
               <img
@@ -106,7 +106,7 @@ const Contact = ({ contact, emailContact, callContact, deleteContact, openEditFo
             </div>
           </div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row pl-16">
           <ActionButton
             title="Email"
             ariaLabel="Email"
