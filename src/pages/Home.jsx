@@ -497,6 +497,7 @@ const closeEditForm = async (contactId) => {
           type='text'
           name='name'
           placeholder='Name'
+          autoComplete='name'
           value={newContact.name}
           onChange={handleInputChange}
           className='shadow appearance-none rounded-md w-full py-2 px-3 bg-zinc-800 text-gray-200 leading-tight focus:outline-none focus:shadow-outline'
@@ -504,6 +505,7 @@ const closeEditForm = async (contactId) => {
         <input
           type='email'
           name='email'
+          autoComplete='email'
           placeholder='Email'
           value={newContact.email}
           onChange={handleInputChange}
@@ -512,6 +514,7 @@ const closeEditForm = async (contactId) => {
         <input
           type='tel'
           name='phone'
+          autoComplete='tel'
           placeholder='Phone'
           value={newContact.phone}
           onChange={handleInputChange}

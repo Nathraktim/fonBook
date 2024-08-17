@@ -65,6 +65,7 @@ function Login() {
         <input
           type='text'
           id='username'
+          autoComplete='off'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className='shadow appearance-none rounded-md w-full py-2 px-3 bg-zinc-800 text-gray-200 leading-tight focus:outline-none focus:shadow-outline'
@@ -77,6 +78,7 @@ function Login() {
         <input
           type='password'
           id='password'
+          autoComplete='off'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className='shadow appearance-none rounded-md w-full py-2 px-3 bg-zinc-800 text-gray-200 leading-tight focus:outline-none focus:shadow-outline'
