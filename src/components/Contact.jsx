@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contact = ({ contact, emailContact, callContact, deleteContact, openEditForm, setIsUpdatingContact, setUpdateContact }) => {
   return (
-    <li key={contact.id} className="mx-10 xs:mx-0 sm:mx-4 my-5">
+    <li key={contact.id} className="mx-10 xs:mx-0 xxs:mx-0 xxxs:mx-0 sm:mx-4 my-5">
       <div className="flex items-center my-3 justify-between flex-wrap">
         <div className="flex flex-row gap-2">
           {contact.photoLink ? (
