@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Contact from '../components/Contact';
+import imageCompression from 'browser-image-compression';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Home() {
@@ -151,11 +152,15 @@ const closeEditForm = async (contactId) => {
         return;
       }
 
+      const imageFile = newContact.photo;
+      const options = {maxSizeMB: 1, maxWidthOrHeight: 1920, useWebWorker: true};
+      const compressedFile = await imageCompression(imageFile, options);
+
       const formData = new FormData();
       formData.append('name', newContact.name);
       formData.append('email', newContact.email);
       formData.append('phone', newContact.phone);
-      formData.append('photo', newContact.photo);
+      formData.append('photo', compressedFile);
 
       const response = await fetch('https://phonbook-i39g.onrender.com/api/contact', {
         method: 'POST',
@@ -232,13 +237,16 @@ const closeEditForm = async (contactId) => {
             navigate('/login');
             return;
         }
+      const imageFile = newContact.photo;
+      const options = {maxSizeMB: 1, maxWidthOrHeight: 1920, useWebWorker: true};
+      const compressedFile = await imageCompression(imageFile, options);
 
         const formData = new FormData();
         formData.append('name', newContact.name);
         formData.append('email', newContact.email);
         formData.append('phone', newContact.phone);
-        if (newContact.photo) {
-            formData.append('photo', newContact.photo);
+        if (compressedFile) {
+            formData.append('photo', compressedFile);
         }
 
         const response = await fetch(`https://phonbook-i39g.onrender.com/api/contact/${selectedContactId}`, {
