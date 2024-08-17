@@ -36,7 +36,7 @@ function Signup() {
         </div>
       </div>
       <div className='flex-col items-center flex '>
-      <form onSubmit={handleSubmit} className='bg-zinc-900 text-white p-10 sm:p-1 mx-10 xs:mx-2 xxs:mx-0 xxxs:mx-0 sm:mx-7 md:w-[550px] sd:w-[400px] xs:w-[200px] xxs:w-[100px]'>
+      <form onSubmit={handleSubmit} className='bg-zinc-900 text-white p-10 sm:p-1 mx-10 xs:mx-2 xxs:mx-0 xxxs:mx-0 sm:mx-7 md:w-[550px] sm:w-[400px] xs:w-[300px] xxs:w-[200px]'>
       <h2 className='text-2xl font-bold mb-4'>Signup</h2>
       <div className='mb-4'>
         <label htmlFor='username' className='block text-sm font-medium mb-2'>
@@ -85,7 +85,7 @@ function Signup() {
       </div>
     </div>
     // <div className='flex justify-center items-center h-screen bg-zinc-900'>
-    //   <form onSubmit={handleSubmit} className='bg-zinc-900 text-white p-10 mx-10 md:w-[550px] sd:w-[100px]'>
+    //   <form onSubmit={handleSubmit} className='bg-zinc-900 text-white p-10 mx-10 md:w-[550px] sm:w-[100px]'>
     //     <div className='mb-4'>
     //       <label className='block text-gray-300 text-sm font-bold mb-2' htmlFor='username'>
     //         Username
