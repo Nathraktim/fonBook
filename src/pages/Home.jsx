@@ -378,11 +378,12 @@ const compressedImageFile = new File([compressedBlob], fileName, { type: fileTyp
           onDrop={handleDrop}
           onClick={() => fileInputRef.current.click()}
         >
-
-          {compressedImageFile ? (
+        {/* jjjjjjjjjjjjjjjjjjjjjj */}
+        
+          {newContact.photo ? (
             <div className='relative w-[300px] h-fit object-fit: cover sm:w-[250px] md:w-[270px] lg:w-[300px] aspect-1'>
               <img
-              src={URL.createObjectURL(compressedImageFile)}
+              src={URL.createObjectURL(newContact.photo)}
               alt='Preview'
             />
             </div>
