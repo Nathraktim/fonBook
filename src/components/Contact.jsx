@@ -39,7 +39,7 @@ const Contact = ({ contact, emailContact, callContact, deleteContact, openEditFo
               src={imageSrc}
               alt={contact.name}
               onError={(e) => {
-                e.target.src = './react.svg'; // Fallback image if load fails
+                e.target.src = './react.svg';
               }}
             />
           </div>

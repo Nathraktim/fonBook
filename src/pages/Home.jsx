@@ -258,7 +258,7 @@ const compressedImageFile = new File([compressedBlob], fileName, { type: fileTyp
         formData.append('email', newContact.email);
         formData.append('phone', newContact.phone);
         if (compressedImageFile) {
-            formData.append('photo', compressedFile);
+            formData.append('photo', compressedImageFile);
         }
 
         const response = await fetch(`https://phonbook-i39g.onrender.com/api/contact/${selectedContactId}`, {
