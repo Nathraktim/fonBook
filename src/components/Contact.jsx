@@ -1,98 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Contact = ({ contact, emailContact, callContact, deleteContact, openEditForm, setIsUpdatingContact, setUpdateContact }) => {
+const Contact = ({ contact, emailContact, callContact, deleteContact, openEditForm, setIsUpdatingContact }) => {
+  const [imageSrc, setImageSrc] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token'); // Retrieve the token
+
+    if (contact.photoLink && token) {
+      fetch(`https://phonbook-i39g.onrender.com/api/images/${contact.photoLink}`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch image');
+          }
+          return response.blob();
+        })
+        .then((blob) => {
+          const imageUrl = URL.createObjectURL(blob);
+          setImageSrc(imageUrl);
+        })
+        .catch(() => {
+          setImageSrc('./react.svg'); // Fallback image on error
+        });
+    } else {
+      setImageSrc('./react.svg'); // Fallback image if no photoLink or token
+    }
+  }, [contact.photoLink]);
+
   return (
     <li key={contact.id} className="mx-10 xs:mx-0 xxs:mx-0 xxxs:mx-0 sm:mx-4 my-5">
       <div className="flex items-center my-3 justify-between flex-wrap">
         <div className="flex flex-row gap-2">
-          {contact.photoLink ? (
-            <div className="aspect-1 h-16 mr-3 overflow-hidden rounded-full">
-              <img
-                src={`https://phonbook-i39g.onrender.com/api/images/${contact.photoLink}`}
-                alt={contact.name}
-                onError={(e) => {
-                  e.target.src = './react.svg';
-                }}
-              />
-            </div>
-          ) : (
-            <svg
-              viewBox="0 0 200 200"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-14 mr-3"
-            >
-              <rect width="200" height="200" fill="#D9D9D9" />
-              <rect
-                x="98"
-                y="40"
-                width="11"
-                height="121"
-                rx="5.5"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="98"
-                y="40"
-                width="11"
-                height="121"
-                rx="5.5"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="98"
-                y="40"
-                width="11"
-                height="121"
-                rx="5.5"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="98"
-                y="40"
-                width="11"
-                height="121"
-                rx="5.5"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="164"
-                y="95"
-                width="10"
-                height="121"
-                rx="5"
-                transform="rotate(90 164 95)"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="164"
-                y="95"
-                width="10"
-                height="121"
-                rx="5"
-                transform="rotate(90 164 95)"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="164"
-                y="95"
-                width="10"
-                height="121"
-                rx="5"
-                transform="rotate(90 164 95)"
-                fill="#2E2E2E"
-              />
-              <rect
-                x="164"
-                y="95"
-                width="10"
-                height="121"
-                rx="5"
-                transform="rotate(90 164 95)"
-                fill="#2E2E2E"
-              />
-            </svg>
-          )}
+          <div className="aspect-1 h-16 mr-3 overflow-hidden rounded-full">
+            <img
+              src={imageSrc}
+              alt={contact.name}
+              onError={(e) => {
+                e.target.src = './react.svg'; // Fallback image if load fails
+              }}
+            />
+          </div>
           <div>
             <span className="font-medium text-[20px]">{contact.name}</span>
             <br />
