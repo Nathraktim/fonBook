@@ -156,11 +156,17 @@ const closeEditForm = async (contactId) => {
       const options = {maxSizeMB: 1, maxWidthOrHeight: 1920, useWebWorker: true};
       const compressedFile = await imageCompression(imageFile, options);
 
+      const fileName = imageFile.name;
+      const fileType = imageFile.type;
+
+      const compressedBlob = new Blob([compressedFile], { type: fileType });
+const compressedImageFile = new File([compressedBlob], fileName, { type: fileType, lastModified: Date.now() });
+
       const formData = new FormData();
       formData.append('name', newContact.name);
       formData.append('email', newContact.email);
       formData.append('phone', newContact.phone);
-      formData.append('photo', compressedFile);
+      formData.append('photo', compressedImageFile);
 
       const response = await fetch('https://phonbook-i39g.onrender.com/api/contact', {
         method: 'POST',
@@ -241,11 +247,17 @@ const closeEditForm = async (contactId) => {
       const options = {maxSizeMB: 1, maxWidthOrHeight: 1920, useWebWorker: true};
       const compressedFile = await imageCompression(imageFile, options);
 
+      const fileName = imageFile.name;
+      const fileType = imageFile.type;
+
+      const compressedBlob = new Blob([compressedFile], { type: fileType });
+const compressedImageFile = new File([compressedBlob], fileName, { type: fileType, lastModified: Date.now() });
+
         const formData = new FormData();
         formData.append('name', newContact.name);
         formData.append('email', newContact.email);
         formData.append('phone', newContact.phone);
-        if (compressedFile) {
+        if (compressedImageFile) {
             formData.append('photo', compressedFile);
         }
 
