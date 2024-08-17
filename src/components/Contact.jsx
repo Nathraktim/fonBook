@@ -150,7 +150,7 @@ const ActionButton = ({ title, ariaLabel, onClick, icon, alt, bgColor }) => (
     title={title}
     aria-label={ariaLabel}
     onClick={onClick}
-    className={`${bgColor} text-white text-[15px] font-normal hover:font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:cursor-pointer flex justify-center items-center`}
+    className={`${bgColor} w-[3.25rem] h-[2.18rem] rounded focus:outline-none focus:shadow-outline hover:cursor-pointer flex justify-center items-center`}
   >
     <img src={icon} alt={alt} className="w-5 h-5" />
   </div>
