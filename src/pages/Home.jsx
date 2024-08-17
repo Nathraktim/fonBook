@@ -111,7 +111,7 @@ const closeEditForm = async (contactId) => {
       localStorage.removeItem('username');
       localStorage.removeItem('token');
       localStorage.removeItem('loglevel');
-      navigate('/login');
+      navigate('/');
     }
   };
 
